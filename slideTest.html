@@ -37,7 +37,7 @@
 		.preload-images{
 			background: black;
 			height: 80%;
-			width: 90%;
+			width: 100%;
 			position: absolute;
 			top:10%;
 			margin: 0 auto;	
@@ -48,13 +48,18 @@
 		
 		.preload-images img {
 			display: none;
+			max-width: 120%;
+			position:relative;
+			top: 50%;
+  	-webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 			
 		}
 		.preload-images .slide_active{
-			//height:90%;
-			//position: absolute;
-			//display: block;
-		//	margin: auto auto;
+		
+    		display: block;
+			margin:  auto;
 		}
 		
 		
@@ -80,12 +85,12 @@
 	
 		<div id="slider_box" >
 			<div id="slide_closetage">
-			&Otimes;
+			&smashp;
 			</div>
 				<div class="preload-images ">
 					
 					<img class="slide_active" src="../uploadfiles/upload/3e963bd38b24085e7485bd20b182e29a8f6a4666d01609247a492b83d10735fae7cd3455.jpg"/>
-					<img src="../uploadfiles/upload/8a6083de477bb17432ec75a0f3c7edeb7553B603-0D42-4CE9-A75E-30CD006BE9C4.png" />
+					<img  src="../uploadfiles/upload/8a6083de477bb17432ec75a0f3c7edeb7553B603-0D42-4CE9-A75E-30CD006BE9C4.png" />
 				</div>
 				</div>
 		
