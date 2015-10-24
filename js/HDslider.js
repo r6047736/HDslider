@@ -12,13 +12,11 @@
 			
 			this.t = node;
 			this.imageIndex = 0;
-			this.imglength=$('#slider_box img').length;
+			
 			this._box = $('#slider_box');
 			this._box.hide();
 			this.listen();
-			//console.log("registe");
-			//console.log(this.t);
-			//console.log(this.imageIndex);
+		
 		}
 		HDSlider.prototype.precheck=function(){
 				if ($('#slider_box').length<1){
@@ -59,10 +57,13 @@
 		}
 					  
 		HDSlider.prototype.showSlide=function(){
+			
 			if (!this.precheck()){
 				alert("no slider_box element");
 				
 			}
+			$('#slider_box img:eq(0)').addClass("slide_active");
+		
 			$('#slider_box').show();
 			
 		}
@@ -76,17 +77,19 @@
 			
 		}	
 		HDSlider.prototype.nextImage=function(){
+			var l = $('#slider_box img').length;
 			console.log("nextImage trriger");
+			console.log($("#slider_box img").length);
 			$('#slider_box img:eq('+this.imageIndex+')').removeClass('slide_active');
-			this.imageIndex = (this.imageIndex+1)%this.imglength;
+			this.imageIndex = (this.imageIndex+1)%l;
 			$('#slider_box img:eq('+this.imageIndex+')').addClass("slide_active");
 			
 			console.log(this.imageIndex);
 		}
 		HDSlider.prototype.backImage=function(){
-			
+			var l = $('#slider_box img').length; // for angular case;
 			$('#slider_box img:eq('+this.imageIndex+')').removeClass('slide_active');
-			this.imageIndex = (this.imageIndex-1)%this.imglength;
+			this.imageIndex = (this.imageIndex-1)%l;
 			$('#slider_box img:eq('+this.imageIndex+')').addClass("slide_active");
 		
 		}

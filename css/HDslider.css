@@ -1,21 +1,22 @@
 	#slider_box{
-			position: fixed;
+			position:absolute;
 			top:0px;
 			min-width:100%;
 			min-height:100%;
-			 background:rgba(0,0,0,0.5);
+			 background:rgba(0,0,0,0.8);
 			bottom: 0px;
 			padding: 0;
 			margin: 0;
+		z-index: 9999;
 		}
 		
 		#slide_closetage{
 			position: absolute;
-			right:0px;
-			//top:0px;
+			right:10px;
+			top:-30px;
 			height: 50px;
 			width:50px;
-			font-size: 50px;
+			font-size: 70px;
 			color: white;
 			cursor: pointer;
 			
@@ -52,12 +53,14 @@
 		}
 		
 		.preload-images{
-			///background: black;
+			
 			height: 80%;
 			width: 100%;
 			position: absolute;
-			top:10%;
-			margin: 0 auto;	
+			
+			margin:  auto;
+			top: 0;
+			bottom: 0;
 			left: 0;
 			right:0;
 			
@@ -74,19 +77,22 @@
   		-ms-transform: translateY(-50%);
   		transform: translateY(-50%);
 			//background: black;
-			overflow: hidden;
+			//overflow: hidden;
 			
 		}
 		.preload-images  .algincenter_container img {
 			display: none;
+			//width: 100%;
 			max-width: 100%;
-			max-height: 100%;
-			
-			
-		
-  
-			
+			max-height: 100%;	
 		}
+		@media only screen and (max-device-width: 500px) {
+
+    .preload-images  .algincenter_container img {
+        width: 100%;
+    }
+}
+
 		.preload-images .algincenter_container img.slide_active{
 			position:absolute;
 			//height:100%;
