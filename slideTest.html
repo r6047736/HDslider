@@ -17,9 +17,44 @@
 			padding: 0;
 			margin: 0;
 		}
+		
+		#slide_closetage{
+			position: absolute;
+			right:0px;
+			//top:0px;
+			height: 50px;
+			width:50px;
+			font-size: 50px;
+			color: white;
+			cursor: pointer;
+			
+		}
+		#slide_closetage:hover{
+			color:#03A9F4;
+			
+			
+		}
+		.preload-images{
+			background: black;
+			height: 80%;
+			width: 90%;
+			position: absolute;
+			top:10%;
+			margin: 0 auto;	
+			left: 0;
+			right:0;
+			
+		}
+		
 		.preload-images img {
 			display: none;
 			
+		}
+		.preload-images .slide_active{
+			//height:90%;
+			//position: absolute;
+			//display: block;
+		//	margin: auto auto;
 		}
 		
 		
@@ -32,9 +67,9 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="well col-xs-3">
+			<div class="well col-xs-3 " id="box">
+			123
 			
-			<div></div>
 			
 			</div>
 		</div>
@@ -44,10 +79,13 @@
 		
 	
 		<div id="slider_box" >
-				
-				<div class="preload-images">
-					<img src="uploadfiles/upload/3e963bd38b24085e7485bd20b182e29a8f6a4666d01609247a492b83d10735fae7cd3455.jpg"/>
-					<img src="uploadfiles/upload/8a6083de477bb17432ec75a0f3c7edeb7553B603-0D42-4CE9-A75E-30CD006BE9C4.png" />
+			<div id="slide_closetage">
+			&Otimes;
+			</div>
+				<div class="preload-images ">
+					
+					<img class="slide_active" src="../uploadfiles/upload/3e963bd38b24085e7485bd20b182e29a8f6a4666d01609247a492b83d10735fae7cd3455.jpg"/>
+					<img src="../uploadfiles/upload/8a6083de477bb17432ec75a0f3c7edeb7553B603-0D42-4CE9-A75E-30CD006BE9C4.png" />
 				</div>
 				</div>
 		
@@ -76,6 +114,7 @@
 			this.t = node;
 			this.listen();
 			console.log("registe");
+			console.log(this.t);
 		}
 		HDSlider.prototype.precheck=function(){
 				if ($('#slider_box').length<1){
@@ -86,18 +125,22 @@
 			
 		}
 		HDSlider.prototype.listen=function(){
+			var self = this;
 			if (!this.precheck()){
 				alert("listener failed, no slider_box element")
 				
 			}
-				this.t.on('click',function(){
-					this.showSlide;
+				this.t.bind('click',function(){
+					console.log("clicked");
+					self.showSlide();
 					
 				})
-				$('#slider_box').on('click',function(){
-					this.hideSlide();
+				$('#slide_closetage').on('click',function(e){
+					
+					self.hideSlide();
 					
 				})
+				
 				
 			
 		}
@@ -126,8 +169,8 @@
     		//new HDSlider().listen()
   		})
 		}(jQuery)	
-			
-		$.HDSlider.init($('.well'))
-		
+		$(document).ready(function() {	
+		$.HDSlider.init($('#box'));
+		});
 	</script>
 </html>
