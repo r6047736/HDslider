@@ -62,6 +62,7 @@
 				alert("no slider_box element");
 				
 			}
+			if (this.imageIndex==0)
 			$('#slider_box img:eq(0)').addClass("slide_active");
 		
 			$('#slider_box').show();
@@ -72,6 +73,8 @@
 				alert("no slider_box element");
 				
 			}
+			
+			
 			$('#slider_box').hide();
 				
 			
