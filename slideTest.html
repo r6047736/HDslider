@@ -34,8 +34,34 @@
 			
 			
 		}
+		#slide_left_arrow{
+			cursor: pointer;
+			position: absolute;
+			left:0;
+			height:100px;
+			color: white;
+			font-size: 100px;
+			margin: auto;
+			top: 0; bottom: 0; 
+		}
+		#slide_right_arrow{
+			cursor: pointer;
+			position: absolute;
+			right:0;
+			height:100px;
+			color: white;
+			font-size: 100px;
+			margin: auto;
+			top: 0; bottom: 0; 
+		}
+		#slide_right_arrow:hover, #slide_left_arrow:hover{
+			//font-size: 120px;
+			color:#3F51B5;
+			
+		}
+		
 		.preload-images{
-			background: black;
+			///background: black;
 			height: 80%;
 			width: 100%;
 			position: absolute;
@@ -45,19 +71,27 @@
 			right:0;
 			
 		}
-		
-		.preload-images img {
-			display: none;
-			max-width: 120%;
-			position:relative;
+		.algincenter_container{
+			width: 100%;
+			height:100%;
+				position:relative;
 			top: 50%;
-  	-webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+			max-width:100%;
+		-webkit-transform: translateY(-50%);
+  		-ms-transform: translateY(-50%);
+  		transform: translateY(-50%);
+			background: black;
 			
 		}
-		.preload-images .slide_active{
+		.preload-images  .algincenter_container img {
+			display: none;
+			max-width: 120%;
 		
+  
+			
+		}
+		.preload-images .algincenter_container .slide_active{
+			height:100%;
     		display: block;
 			margin:  auto;
 		}
@@ -73,7 +107,7 @@
 	<body>
 		<div class="container">
 			<div class="well col-xs-3 " id="box">
-			123
+			show slide;
 			
 			
 			</div>
@@ -87,11 +121,24 @@
 			<div id="slide_closetage">
 			&smashp;
 			</div>
+			
+			
+			
+			<div></div>
 				<div class="preload-images ">
+					<div class="algincenter_container">
+						<img class="slide_active" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRA8BjRZ6KR1BqJhmm6ppG6TtVKI523wXiT04I4f45uluDXz4OI"/>
+					<img class="" src="http://hdwallpapers-download.com/wp-content/uploads/2014/05/Amazing-Beach-Wallpaper-04.jpg"/>
+					<img  src="http://hdwallpapers-download.com/wp-content/uploads/2014/05/Nice-Beach-Wallpaper-06.jpg" />
+						<img src="http://fbiws.com/images/gallery/1360272080-werqewrqg.jpg.jpg"/>
+						<img src="http://fbiws.com/images/gallery/1360272066-wedfadsse.jpg.jpg">
 					
-					<img class="slide_active" src="../uploadfiles/upload/3e963bd38b24085e7485bd20b182e29a8f6a4666d01609247a492b83d10735fae7cd3455.jpg"/>
-					<img  src="../uploadfiles/upload/8a6083de477bb17432ec75a0f3c7edeb7553B603-0D42-4CE9-A75E-30CD006BE9C4.png" />
+					</div>
+					
 				</div>
+			
+			<div id="slide_left_arrow">&Lt;</div>
+			<div id="slide_right_arrow">&Gt; </div>
 				</div>
 		
 		
@@ -110,7 +157,11 @@
 			}
 			this.t ;
 			this.imageIndex = 0;
+			this.imglength=$('#slider_box img').length;
+			//alert(this.imglength);
+			
 			this._box = $('#slider_box');
+		
 			this._box.hide();
 		
 		}
@@ -118,6 +169,7 @@
 		HDSlider.prototype.init=function(node){
 			this.t = node;
 			this.listen();
+			
 			console.log("registe");
 			console.log(this.t);
 		}
@@ -145,6 +197,15 @@
 					self.hideSlide();
 					
 				})
+				$('#slide_right_arrow').on('click',function(){
+					self.nextImage();
+					
+				})
+				$('#slide_left_arrow').on('click',function(){
+					self.backImage();
+					
+				})
+				
 				
 				
 			
@@ -164,16 +225,34 @@
 				
 			}
 			$('#slider_box').hide();
-			
+				
 			
 		}	
+		HDSlider.prototype.nextImage=function(){
+			console.log("nextImage trriger");
+			$('#slider_box img:eq('+this.imageIndex+')').removeClass('slide_active');
+			this.imageIndex = (this.imageIndex+1)%this.imglength;
+			$('#slider_box img:eq('+this.imageIndex+')').addClass("slide_active");
+			
+			console.log(this.imageIndex);
+		}
+		HDSlider.prototype.backImage=function(){
+			//console.log("nextImage trriger");
+			$('#slider_box img:eq('+this.imageIndex+')').removeClass('slide_active');
+			this.imageIndex = (this.imageIndex-1)%this.imglength;
+			$('#slider_box img:eq('+this.imageIndex+')').addClass("slide_active");
+			
+			//console.log(this.imageIndex);
+		}
 			
 		$.HDSlider = new HDSlider();
 			
 		$(function () {
-    		//new HDSlider().listen()
+    		
   		})
 		}(jQuery)	
+		
+		
 		$(document).ready(function() {	
 		$.HDSlider.init($('#box'));
 		});
