@@ -1,5 +1,5 @@
 	#slider_box{
-			position:absolute;
+			position:fixed;
 			top:0px;
 			min-width:100%;
 			min-height:100%;
@@ -86,12 +86,7 @@
 			max-width: 100%;
 			max-height: 100%;	
 		}
-		@media only screen and (max-device-width: 500px) {
 
-    .preload-images  .algincenter_container img {
-        width: 100%;
-    }
-}
 
 		.preload-images .algincenter_container img.slide_active{
 			position:absolute;

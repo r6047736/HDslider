@@ -33,7 +33,7 @@
 				
 			}
 				this.t.bind('click',function(){
-					console.log("clicked");
+				//	console.log("clicked");
 					self.showSlide();
 					
 				})
@@ -81,13 +81,13 @@
 		}	
 		HDSlider.prototype.nextImage=function(){
 			var l = $('#slider_box img').length;
-			console.log("nextImage trriger");
-			console.log($("#slider_box img").length);
+		//	console.log("nextImage trriger");
+		//	console.log($("#slider_box img").length);
 			$('#slider_box img:eq('+this.imageIndex+')').removeClass('slide_active');
 			this.imageIndex = (this.imageIndex+1)%l;
 			$('#slider_box img:eq('+this.imageIndex+')').addClass("slide_active");
 			
-			console.log(this.imageIndex);
+		//	console.log(this.imageIndex);
 		}
 		HDSlider.prototype.backImage=function(){
 			var l = $('#slider_box img').length; // for angular case;
